@@ -1,0 +1,34 @@
+- name: Erentil FR4
+  source: https://www.reddit.com/r/DestinyTheGame/comments/cbxao7/massive_breakdown_of_erentil_fr4_including_stats/
+  perks:
+  - - Signal MS5
+    - Impulse MS3
+  - - Particle Repeater
+    - Projection Fuse
+  - - Firmly Planted
+    - Under Pressure
+    - Moving Target
+  - - Backup Plan
+    - Tap the Trigger
+- name: Steelfeather Repeater
+  source: https://www.reddit.com/r/sharditkeepit/comments/eazb6x/sundial_weapons_mnk_breakdown/
+  notes: by pandapaxxy
+  perks:
+  - - Hammer-Forged Rifling
+    - Smallbore
+    - Extended Barrel (PvE)
+    - Full Bore (PvP)
+  - - High-Caliber Rounds
+    - Armor-Piercing Rounds (PvE)
+    - Appended Mag (PvE)
+    - Ricochet Rounds (PvP)
+  - - Feeding Frenzy
+    - Firmly Planted
+    - Subsistence (PvE)
+  - - Swashbuckler
+    - Vorpal Weapon
+    - Multikill Clip (PvE)
+    - Elemental Capacitor (PvP)
+  masterwork:
+  - Range
+  - Reload (PvE)
