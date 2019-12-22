@@ -1,0 +1,22 @@
+- name: Steelfeather Repeater
+  source: https://www.reddit.com/r/sharditkeepit/comments/eazb6x/sundial_weapons_mnk_breakdown/
+  notes: One of a few rapid-fire autos to get random rolls in Destiny 2. And the only one to be kinetic gives you a reason to grind this.
+  perks:
+  - - Hammer-Forged Rifling
+    - Smallbore
+    - Extended Barrel (PvE)
+    - Full Bore (PvP)
+  - - High-Caliber Rounds
+    - Armor-Piercing Rounds (PvE)
+    - Appended Mag (PvE)
+    - Ricochet Rounds (PvP)
+  - - Feeding Frenzy
+    - Firmly Planted
+    - Subsistence (PvE)
+  - - Swashbuckler
+    - Vorpal Weapon
+    - Multikill Clip (PvE)
+    - Elemental Capacitor (PvP)
+  masterwork:
+  - Range
+  - Reload (PvE)

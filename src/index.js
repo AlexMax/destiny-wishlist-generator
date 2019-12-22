@@ -175,7 +175,7 @@ for (const file of fs.readdirSync(config.dataDir)) {
             const trash = weapon.trash ? weapon.trash : false;
             const notes = weapon.notes ? [weapon.notes] : [];
             for (const wid of weaponsCache[weapon.name].id) {
-                outfile.write(formatWeapon(wid, trash, notes));
+                outfile.write(formatWeapon(wid, trash, notes) + "\r\n");
             }
         }
     }

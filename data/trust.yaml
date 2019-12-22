@@ -1,0 +1,20 @@
+- name: Trust
+  source: https://docs.google.com/spreadsheets/d/1YWX2NCw8joV0T15ivF7Hu98iMC1Za4lzMWpwJiMx6q8/edit?usp=sharing
+  perks:
+  - - Extended Barrel
+    - Full Bore
+    - Polygonal Rifling (PvE)
+    - Hammer-Forged Rifling (PvP)
+  - - Extended Mag
+    - Flared Magwell
+    - Alloy Magazine (PvE)
+    - Accurized Rounds (PvP)
+    - Drop Mag (PvP)
+  - - Outlaw
+    - Dragonfly (PvE)
+    - Triple Tap (PvE)
+    - Opening Shot (PvP)
+  - - Explosive Payload
+    - Zen Moment (Cont)
+    - Rampage (PvE)
+    - Rapid Hit (PvP)

@@ -1,0 +1,12 @@
+- name: Erentil FR4
+  source: https://www.reddit.com/r/DestinyTheGame/comments/cbxao7/massive_breakdown_of_erentil_fr4_including_stats/
+  perks:
+  - - Signal MS5
+    - Impulse MS3
+  - - Particle Repeater
+    - Projection Fuse
+  - - Firmly Planted
+    - Under Pressure
+    - Moving Target
+  - - Backup Plan
+    - Tap the Trigger
