@@ -141,6 +141,10 @@ for (const file of fs.readdirSync(config.dataDir)) {
                     // PvE and PvP perks cannot coexist.
                     continue;
                 }
+                if (perkTypes.has("MKb") && perkTypes.has("Cont")) {
+                    // Mouse+Keyboard and controller perks cannot coexist.
+                    continue;
+                }
 
                 // Construct notes.
                 const notes = [];
