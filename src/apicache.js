@@ -56,6 +56,16 @@ const API_PERKS = new Set([
         const type = item.itemTypeDisplayName;
 
         if (API_WEAPONS.has(type)) {
+            if (item.equippable !== true) {
+                // Probably not an actual live weapon.  No idea if this is
+                // false for disabled weapons like Telesto.
+                continue;
+            }
+            if (!/^Random Perks:/.test(item.displaySource)) {
+                // Why the heck are you wishlisting non-random weapons?
+                continue;
+            }
+
             if (name in weapons) {
                 weapons[name].id.push(id);
             } else {
