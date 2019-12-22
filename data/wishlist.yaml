@@ -12,7 +12,7 @@
     - Tap the Trigger
 - name: Steelfeather Repeater
   source: https://www.reddit.com/r/sharditkeepit/comments/eazb6x/sundial_weapons_mnk_breakdown/
-  notes: by pandapaxxy
+  notes: One of a few rapid-fire autos to get random rolls in Destiny 2. And the only one to be kinetic gives you a reason to grind this.
   perks:
   - - Hammer-Forged Rifling
     - Smallbore
@@ -32,3 +32,7 @@
   masterwork:
   - Range
   - Reload (PvE)
+- name: Temporal Clause
+  source: chrisfried and sundevour
+  trash: true
+  notes: Redundant compared to Hammerhead or Bane of Sorrow.

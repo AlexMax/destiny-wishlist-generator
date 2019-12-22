@@ -26,10 +26,12 @@ const API_WEAPONS = new Set([
 ]);
 const API_PERKS = new Set([
     "Barrel",
+    "Battery",
     "Blade",
     "Guard",
     "Launcher Barrel",
     "Magazine",
+    "Scope",
     "Sight",
     "Trait"
 ]);
