@@ -102,8 +102,16 @@ for (const file of fs.readdirSync(config.dataDir)) {
         if (!(weapon.name in weaponsCache)) {
             throw new Error("Cannot find weapon " + weapon.name);
         }
+        if (!weapon.source) {
+            throw new Error('No source provided for ' + weapon.name);
+        }
 
-        outfile.write(util.format("\r\n// %s\r\n", weapon.name));
+        outfile.write(util.format("\r\n// %s\r\n// %s\r\n", weapon.name, weapon.source));
+        if (weapon.notes) {
+            // Notes are not written in notes: format because if they
+            // exist, they'll be added to every roll.
+            outfile.write(util.format("// %s\r\n", weapon.notes));
+        }
 
         if (weapon.perks) {
             // Find all permutations of perks.
