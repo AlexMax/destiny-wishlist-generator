@@ -102,6 +102,9 @@ const perksCache = json.perks;
 
 for (const file of fs.readdirSync(config.dataDir)) {
     const full = path.join(config.dataDir, file);
+    if (path.extname(full) !== ".yaml") {
+        continue;
+    }
     const doc = yaml.safeLoad(fs.readFileSync(full));
 
     for (const weapon of doc) {
@@ -185,9 +188,7 @@ for (const file of fs.readdirSync(config.dataDir)) {
                     notes.push(weapon.notes);
                 }
                 if (mwNames.length > 0) {
-                    notes.push(
-                        util.format("(mw: %s)", mwNames.join(", "))
-                    );
+                    notes.push(util.format("(mw: %s)", mwNames.join(", ")));
                 }
 
                 // Assemble ID's.
