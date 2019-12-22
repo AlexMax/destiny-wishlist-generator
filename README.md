@@ -23,15 +23,19 @@ The input data format is in [YAML][1] format.
     - Another suggested perk for slot 2.
   - - A suggested perk for slot 3 that is only viable in PvE (PvE)
     - A suggested perk for slot 3 that is only viable in PvP (PvP)
-# Rolls that have a PvE or PvP-specific perk will have a (PvE) or (PvP) added
-# to the front of their notes.  Rolls that mix PvE and PvP perks will be
-# automatically filtered out and not wishlisted.
+    # Rolls that have a PvE or PvP-specific perk will have a (PvE) or (PvP)
+    # added to the front of their notes.  Rolls that mix PvE and PvP perks
+    # will be automatically filtered out and not wishlisted.
   - - A suggested perk for slot 4 that is only viable with mouse and keyboard (MKb)
     - A suggested perk for slot 4 that is only viable with a controller (Cont)
-# Rolls that mix mouse and keyboard and controller perks will be similarly
-# filtered out.
+    # Rolls that mix mouse and keyboard and controller perks will be similarly
+    # filtered out.
     - A suggested perk for slot 4 that is only viable with a controller in PvE (Cont, PvE)
-# Rolls can be specific to both content and control style.
+    # Rolls can be specific to both content and control style.
+  masterwork:
+  - A suggested masterwork
+  - Another suggested masterwork
+    # Masterwork suggestions are just added to the notes of the roll.
 
 # You can also wishlist a weapon without perks.
 - name: Name of the weapon
