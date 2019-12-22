@@ -2,7 +2,7 @@ const fs = require("fs");
 const superagent = require("superagent");
 
 const config = require("../wishlist.config.js");
-const API_KEY = config.apikey;
+const API_KEY = config.apiKey;
 const API_PLATFORM_URL = "https://www.bungie.net/Platform";
 const API_DATA_URL = "https://www.bungie.net";
 
@@ -74,7 +74,7 @@ const API_PERKS = new Set([
         }
     }
     fs.writeFileSync(
-        "var/cache.json",
+        config.cacheFile,
         JSON.stringify({
             weapons: weapons,
             perks: perks

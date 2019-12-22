@@ -11,6 +11,8 @@
         "prettier": "^1.19.1"
     },
     "scripts": {
+        "build": "node src/index.js",
+        "build-cache": "node src/apicache.js",
         "prettier": "prettier --write \"src/**/*.js\" \"*config.js\" package.json"
     },
     "author": "",
