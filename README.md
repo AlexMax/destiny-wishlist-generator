@@ -1,15 +1,17 @@
 ## How does this work?
 
-This ain't meant to be used by anybody yet. If you _really_ want to try it...
+This is a script that takes files containing perk suggestions for various Destiny 2 weapons and turns them into wishlist files that can be used with DIM.
 
-1. Copy `wishlist.default.config.js` to `wishlist.config.js` and fill out your API key.
-2. Run `npm run build-cache` to cache weapons and perks.
-3. Modify the wishlists in the data directory.
-4. Run `npm run build` to actually generate wishlists based on wishlist data.
+If all you want is a wishlist to use with DIM, I keep my own personal curated suggestions over at [AlexMax/destiny-wishlists][1].  That repository also contains data files that you can use as a base for your own perk lists.  That said, if you _really_ want to run the script yourself...
+
+1. Clone the repository and install the dependencies with `npm`.
+2. Copy `wishlist.default.config.js` to `wishlist.config.js` and fill out all of the parameters.  In particular, you will need a Bungie API key in order to retrieve the latest set of weapon and perk data, as well as a set of data files to process.
+3. Run `npm run build-cache` to cache weapons and perks.
+4. Run `npm run build` to actually generate the wishlist based on the data files.
 
 ## Data format
 
-The input data format is in [YAML][1] format.
+The input data format is in [YAML][2] format.
 
 ```yaml
 # Wishlist a weapon with specific perks.
@@ -46,7 +48,8 @@ The input data format is in [YAML][1] format.
 
 ## Notes
 
-The format of DIM wishlists can be found [here][2].
+The format of DIM wishlists can be found [here][3].
 
+[1]: https://github.com/AlexMax/destiny-wishlists
 [1]: https://yaml.org/
 [2]: https://github.com/DestinyItemManager/DIM/blob/master/docs/COMMUNITY_CURATIONS.md
