@@ -41,7 +41,7 @@ const deconstructPerk = str => {
 /**
  * Return a formatted wishlist row.
  */
-const formatWishlist = (weapon, perks, notes = null) => {
+const formatPerks = (weapon, perks, notes = null) => {
     if (notes && notes.length > 0) {
         return util.format(
             "dimwishlist:item=%d&perks=%s#notes:%s",
@@ -55,6 +55,22 @@ const formatWishlist = (weapon, perks, notes = null) => {
             weapon,
             perks.join(",")
         );
+    }
+};
+
+/**
+ * Format a standalone weapon suggestion.
+ */
+const formatWeapon = (weapon, trash = false, notes = null) => {
+    if (notes && notes.length > 0) {
+        return util.format(
+            "dimwishlist:item=%s%d#notes:%s",
+            trash ? "-" : "",
+            weapon,
+            notes.join(" ")
+        );
+    } else {
+        return util.format("dimwishlist:item=%s%d", trash ? "-" : "", weapon);
     }
 };
 
@@ -140,10 +156,15 @@ for (const file of fs.readdirSync(config.dataDir)) {
                 const rows = cartesian(...idPerms);
                 for (const row of rows) {
                     const wid = row.shift();
-                    outfile.write(formatWishlist(wid, row, notes) + "\r\n");
+                    outfile.write(formatPerks(wid, row, notes) + "\r\n");
                 }
             }
         } else {
+            const trash = weapon.trash ? weapon.trash : false;
+            const notes = weapon.notes ? [weapon.notes] : [];
+            for (const wid of weaponsCache[weapon.name].id) {
+                outfile.write(formatWeapon(wid, trash, notes));
+            }
         }
     }
 }
