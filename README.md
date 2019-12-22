@@ -32,7 +32,7 @@ The input data format is in [YAML][1] format.
     # filtered out.
     - A suggested perk for slot 4 that is only viable with a controller in PvE (Cont, PvE)
     # Rolls can be specific to both content and control style.
-  masterwork:
+  masterworks:
   - A suggested masterwork
   - Another suggested masterwork
     # Masterwork suggestions are just added to the notes of the roll.

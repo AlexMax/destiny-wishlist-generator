@@ -149,10 +149,13 @@ for (const file of fs.readdirSync(config.dataDir)) {
                 // Construct notes.
                 const notes = [];
                 if (perkTypes.size > 0) {
-                    notes.push("(" + Array.from(perkTypes).join(", ") + ")");
+                    notes.push(util.format('(%s)', Array.from(perkTypes).join(", ")));
                 }
                 if (weapon.notes) {
                     notes.push(weapon.notes);
+                }
+                if (weapon.masterworks) {
+                    notes.push(util.format('(mw: %s)', weapon.masterworks.join(', ')));
                 }
 
                 // Assemble ID's.
