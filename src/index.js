@@ -39,6 +39,13 @@ const deconstructPerk = str => {
 };
 
 /**
+ * Deconstruct masterwork string into masterwork and any types contained in parenthesis.
+ */
+const deconstructMW = str => {
+    return deconstructPerk(str);
+};
+
+/**
  * Return a formatted wishlist row.
  */
 const formatPerks = (weapon, perks, notes = null) => {
@@ -74,7 +81,7 @@ const formatWeapon = (weapon, trash = false, notes = null) => {
     }
 };
 
-const perkTypes = new Set();
+const types = new Set();
 
 // Open an output file.
 const outfile = fs.createWriteStream(config.outDir + "/wishlist.txt", {
@@ -103,10 +110,12 @@ for (const file of fs.readdirSync(config.dataDir)) {
             throw new Error("Cannot find weapon " + weapon.name);
         }
         if (!weapon.source) {
-            throw new Error('No source provided for ' + weapon.name);
+            throw new Error("No source provided for " + weapon.name);
         }
 
-        outfile.write(util.format("\r\n// %s\r\n// %s\r\n", weapon.name, weapon.source));
+        outfile.write(
+            util.format("\r\n// %s\r\n// %s\r\n", weapon.name, weapon.source)
+        );
         if (weapon.notes) {
             // Notes are not written in notes: format because if they
             // exist, they'll be added to every roll.
@@ -121,8 +130,8 @@ for (const file of fs.readdirSync(config.dataDir)) {
                 const perks = perm.map(deconstructPerk);
 
                 // Check for conflicting perk types.
+                types.clear();
                 const perkNames = [];
-                perkTypes.clear();
                 for (const perk of perks) {
                     // Check to see if the perk actually exists
                     if (!(perk.name in perksCache)) {
@@ -132,30 +141,53 @@ for (const file of fs.readdirSync(config.dataDir)) {
 
                     if (perk.types) {
                         for (const type of perk.types) {
-                            perkTypes.add(type);
+                            types.add(type);
                         }
                     }
                 }
 
-                if (perkTypes.has("PvE") && perkTypes.has("PvP")) {
+                if (types.has("PvE") && types.has("PvP")) {
                     // PvE and PvP perks cannot coexist.
                     continue;
                 }
-                if (perkTypes.has("MKb") && perkTypes.has("Cont")) {
+                if (types.has("MKb") && types.has("Cont")) {
                     // Mouse+Keyboard and controller perks cannot coexist.
                     continue;
                 }
 
+                // Add valid masterwork types.
+                const mwNames = [];
+                if (weapon.masterworks) {
+                    for (const masterwork of weapon.masterworks) {
+                        const mw = deconstructMW(masterwork);
+                        if (mw.types) {
+                            for (const type of mw.types) {
+                                if (types.has(type)) {
+                                    // Valid only for specific types.
+                                    mwNames.push(mw.name);
+                                }
+                            }
+                        } else {
+                            // Valid for all types.
+                            mwNames.push(mw.name);
+                        }
+                    }
+                }
+
                 // Construct notes.
                 const notes = [];
-                if (perkTypes.size > 0) {
-                    notes.push(util.format('(%s)', Array.from(perkTypes).join(", ")));
+                if (types.size > 0) {
+                    notes.push(
+                        util.format("(%s)", Array.from(types).join(", "))
+                    );
                 }
                 if (weapon.notes) {
                     notes.push(weapon.notes);
                 }
-                if (weapon.masterworks) {
-                    notes.push(util.format('(mw: %s)', weapon.masterworks.join(', ')));
+                if (mwNames.length > 0) {
+                    notes.push(
+                        util.format("(mw: %s)", mwNames.join(", "))
+                    );
                 }
 
                 // Assemble ID's.
