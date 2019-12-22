@@ -1,8 +1,8 @@
 const path = require("path");
 
 module.exports = {
-    apiKey: "<Insert API Key Here>",
+    apiKey: "<Insert Bungie.net API key here>",
     cacheFile: path.resolve(__dirname, "var/cache.json"),
-    dataDir: path.resolve(__dirname, "data"),
-    outDir: path.resolve(__dirname, "out")
+    dataDir: "<Insert path to data directory here>",
+    outDir: "<Insert path to output directory here>",
 };
