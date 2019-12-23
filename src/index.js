@@ -81,7 +81,8 @@ const formatWeapon = (weapon, trash = false, notes = null) => {
     }
 };
 
-const types = new Set();
+const perkTypes = new Set();
+const mwTypes = new Set();
 
 // Open an output file.
 const outfile = fs.createWriteStream(config.outDir + "/wishlist.txt", {
@@ -133,7 +134,7 @@ for (const file of fs.readdirSync(config.dataDir)) {
                 const perks = perm.map(deconstructPerk);
 
                 // Check for conflicting perk types.
-                types.clear();
+                perkTypes.clear();
                 const perkNames = [];
                 for (const perk of perks) {
                     // Check to see if the perk actually exists
@@ -144,16 +145,16 @@ for (const file of fs.readdirSync(config.dataDir)) {
 
                     if (perk.types) {
                         for (const type of perk.types) {
-                            types.add(type);
+                            perkTypes.add(type);
                         }
                     }
                 }
 
-                if (types.has("PvE") && types.has("PvP")) {
+                if (perkTypes.has("PvE") && perkTypes.has("PvP")) {
                     // PvE and PvP perks cannot coexist.
                     continue;
                 }
-                if (types.has("MKb") && types.has("Cont")) {
+                if (perkTypes.has("MKb") && perkTypes.has("Cont")) {
                     // Mouse+Keyboard and controller perks cannot coexist.
                     continue;
                 }
@@ -164,24 +165,38 @@ for (const file of fs.readdirSync(config.dataDir)) {
                     for (const masterwork of weapon.masterworks) {
                         const mw = deconstructMW(masterwork);
                         if (mw.types) {
+                            // Masterwork is specialized.  Depending on what
+                            // perks we rolled, we might or might not want to
+                            // add the masterwork.
+                            mwTypes.clear();
                             for (const type of mw.types) {
-                                if (types.has(type)) {
-                                    // Valid only for specific types.
-                                    mwNames.push(mw.name);
-                                }
+                                mwTypes.add(type);
                             }
+                            if (mwTypes.has("PvE") && perkTypes.has("PvP")) {
+                                continue;
+                            }
+                            if (mwTypes.has("PvP") && perkTypes.has("PvE")) {
+                                continue;
+                            }
+                            if (mwTypes.has("MKb") && perkTypes.has("Cont")) {
+                                continue;
+                            }
+                            if (mwTypes.has("Cont") && perkTypes.has("MKb")) {
+                                continue;
+                            }
+                            mwNames.push(masterwork);
                         } else {
-                            // Valid for all types.
-                            mwNames.push(mw.name);
+                            // Masterwork is good for all cases.
+                            mwNames.push(masterwork);
                         }
                     }
                 }
 
                 // Construct notes.
                 const notes = [];
-                if (types.size > 0) {
+                if (perkTypes.size > 0) {
                     notes.push(
-                        util.format("(%s)", Array.from(types).join(", "))
+                        util.format("(%s)", Array.from(perkTypes).join(", "))
                     );
                 }
                 if (weapon.notes) {
