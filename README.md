@@ -19,25 +19,25 @@ The input data format is in [YAML][2] format.
   source: Where the perk suggestions came from. # Not optional.
   notes: Any notes about the weapon you want to show up in DIM. # Optional
   perks:
-  - - A suggested perk for slot 1.
-    - Another suggested perk for slot 1.
-  - - A suggested perk for slot 2.
-    - Another suggested perk for slot 2.
-  - - A suggested perk for slot 3 that is only viable in PvE (PvE)
-    - A suggested perk for slot 3 that is only viable in PvP (PvP)
-    # Rolls that have a PvE or PvP-specific perk will have a (PvE) or (PvP)
-    # added to the front of their notes.  Rolls that mix PvE and PvP perks
-    # will be automatically filtered out and not wishlisted.
-  - - A suggested perk for slot 4 that is only viable with mouse and keyboard (MKb)
-    - A suggested perk for slot 4 that is only viable with a controller (Cont)
-    # Rolls that mix mouse and keyboard and controller perks will be similarly
-    # filtered out.
-    - A suggested perk for slot 4 that is only viable with a controller in PvE (Cont, PvE)
-    # Rolls can be specific to both content and control style.
+    - - A suggested perk for slot 1.
+      - Another suggested perk for slot 1.
+    - - A suggested perk for slot 2.
+      - Another suggested perk for slot 2.
+    - - A perk for slot 3 that is only viable in PvE (PvE)
+      - A perk for slot 3 that is only viable in PvP (PvP)
+      # Rolls that have a PvE or PvP-specific perk will have a (PvE) or (PvP)
+      # added to the front of their notes.  Rolls that mix PvE and PvP perks
+      # will be automatically filtered out and not wishlisted.
+    - - A perk for slot 4 that is only viable with mouse and keyboard (MnK)
+      - A perk for slot 4 that is only viable with a controller (Cont)
+      # Rolls that mix mouse and keyboard and controller perks will be
+      # similarly filtered out.
+      - A perk for slot 4 that is only viable with a controller in PvE (Cont, PvE)
+      # Rolls can be specific to both content and control style.
   masterworks:
   - A suggested masterwork
   - Another suggested masterwork
-    # Masterwork suggestions are just added to the notes of the roll.
+  # Masterwork suggestions are just added to the notes of the roll.
 
 # You can also wishlist a weapon without perks.
 - name: Name of the weapon
@@ -51,5 +51,5 @@ The input data format is in [YAML][2] format.
 The format of DIM wishlists can be found [here][3].
 
 [1]: https://github.com/AlexMax/destiny-wishlists
-[1]: https://yaml.org/
-[2]: https://github.com/DestinyItemManager/DIM/blob/master/docs/COMMUNITY_CURATIONS.md
+[2]: https://yaml.org/
+[3]: https://github.com/DestinyItemManager/DIM/blob/master/docs/COMMUNITY_CURATIONS.md
