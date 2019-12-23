@@ -154,7 +154,7 @@ for (const file of fs.readdirSync(config.dataDir)) {
                     // PvE and PvP perks cannot coexist.
                     continue;
                 }
-                if (perkTypes.has("MKb") && perkTypes.has("Cont")) {
+                if (perkTypes.has("MnK") && perkTypes.has("Cont")) {
                     // Mouse+Keyboard and controller perks cannot coexist.
                     continue;
                 }
@@ -178,10 +178,10 @@ for (const file of fs.readdirSync(config.dataDir)) {
                             if (mwTypes.has("PvP") && perkTypes.has("PvE")) {
                                 continue;
                             }
-                            if (mwTypes.has("MKb") && perkTypes.has("Cont")) {
+                            if (mwTypes.has("MnK") && perkTypes.has("Cont")) {
                                 continue;
                             }
-                            if (mwTypes.has("Cont") && perkTypes.has("MKb")) {
+                            if (mwTypes.has("Cont") && perkTypes.has("MnK")) {
                                 continue;
                             }
                             mwNames.push(masterwork);
