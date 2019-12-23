@@ -117,8 +117,14 @@ for (const file of fs.readdirSync(config.dataDir)) {
             throw new Error("No source provided for " + weapon.name);
         }
 
+        const sourceString = weapon.source
+            .split("\n")
+            .filter(a => {
+                return a.trim().length > 0;
+            })
+            .join("\r\n// ");
         outfile.write(
-            util.format("\r\n// %s\r\n// %s\r\n", weapon.name, weapon.source)
+            util.format("\r\n// %s\r\n// %s\r\n", weapon.name, sourceString)
         );
         if (weapon.notes) {
             // Notes are not written in notes: format because if they
